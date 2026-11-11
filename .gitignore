@@ -1,0 +1,34 @@
+# Prevent tracking confidential data folders
+data/
+datasets/
+raw_data/
+*.nii
+*.nii.gz
+*.vcf
+*.csv
+*.tsv
+*.h5
+*.mat
+*.xlsx
+
+# Machine Learning Checkpoints & Output Models
+*.pt
+*.pth
+*.onnx
+*.bin
+checkpoints/
+logs/
+wandb/
+
+# Environment & IDE Files
+.env
+venv/
+.venv/
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+
+# OS System Files
+.DS_Store
+Thumbs.db
