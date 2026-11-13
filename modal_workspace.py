@@ -1,14 +1,22 @@
 import modal
+import subprocess 
 
-app = modal.App("example-get-started")
+app = modal.App("Multimodal-Fusion")
+
+my_image = (
+    modal.Image.debian_slim()
+    .pip_install("numpy", "pandas", "requests", "matplotlib", "scipy", "h5py", )
+    .add_local_dir(".", remote_path = "/Research_project")
+)
+
+@app.function(image = my_image, gpu = "T4")
+def prepare_data():
+    subprocess.run(["python", "/Research_project/prepare_data.py"], 
+                   cwd = "/Research_project", 
+                   check = True, 
+                   )
+
+    
 
 
-@app.function()
-def square(x):
-    print("This code is running on a remote worker!")
-    return x**2
 
-
-@app.local_entrypoint()
-def main():
-    print("the square is", square.remote(42))
