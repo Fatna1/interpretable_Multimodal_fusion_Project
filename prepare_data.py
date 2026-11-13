@@ -28,9 +28,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 
 def banner(title):
-    print("\n" + "=" * 70)
     print(title)
-    print("=" * 70)
 
 
 def standardize_columns(df, candidates, target):
